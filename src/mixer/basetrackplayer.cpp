@@ -186,6 +186,7 @@ BaseTrackPlayerImpl::BaseTrackPlayerImpl(QObject* pParent,
     // BPM of the current song
     m_pFileBPM = std::make_unique<ControlObject>(ConfigKey(group, "file_bpm"));
     m_pKey = make_parented<ControlProxy>(group, "file_key", this);
+    m_pTrackId = std::make_unique<ControlObject>(ConfigKey(group, "track_id"));
 
     m_pReplayGain = make_parented<ControlProxy>(group, "replaygain", this);
     m_pPlay = make_parented<ControlProxy>(group, "play", this);
@@ -302,6 +303,8 @@ void BaseTrackPlayerImpl::loadTrack(TrackPointer pTrack) {
         m_pLoopOutPoint->set(ControlObject::get(
                 ConfigKey(m_pChannelToCloneFrom->getGroup(), "loop_end_position")));
     }
+
+    m_pTrackId->set(m_pLoadedTrack->getId().value());
 
     connectLoadedTrack();
 }

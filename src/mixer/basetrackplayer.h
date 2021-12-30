@@ -137,6 +137,8 @@ class BaseTrackPlayerImpl : public BaseTrackPlayer {
     std::unique_ptr<ControlObject> m_pFileBPM;
     parented_ptr<ControlProxy> m_pKey;
 
+    std::unique_ptr<ControlObject> m_pTrackId;
+
     std::unique_ptr<ControlPushButton> m_pShiftCuesEarlier;
     std::unique_ptr<ControlPushButton> m_pShiftCuesEarlierSmall;
     std::unique_ptr<ControlPushButton> m_pShiftCuesLater;
